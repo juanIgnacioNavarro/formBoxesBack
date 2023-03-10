@@ -2,6 +2,8 @@ import app from './app.js'
 import './database.js'
 import mysql from 'mysql2'
 import dotenv from 'dotenv'
+
+
 dotenv.config()
 
 const port = 3001
