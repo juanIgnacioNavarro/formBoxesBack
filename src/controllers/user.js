@@ -1,5 +1,12 @@
-export const getUsers = (req , res ) => {
-  res.send('hello world');
+import util from 'util';
+
+
+export const getUsers = async (req , res ) => {
+  const query = util.promisify(mysqli.query).bind(mysqli)
+  const sql = `SELECT * FROM formboxes.user;`;
+  const result = await query(sql, [])
+  console.log(result)
+  return result
 }
 
 export const createUser = (req, res) => {

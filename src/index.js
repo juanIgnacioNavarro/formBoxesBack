@@ -20,4 +20,5 @@ mysqli.connect((err) => {
   }
   console.log("Connecting established")
 })
+global.mysqli = mysqli;
 console.log(`Server listen on port ${port}`)
