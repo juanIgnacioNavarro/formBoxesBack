@@ -9,8 +9,12 @@ export const getUsers = async (req , res ) => {
   return result
 }
 
-export const createUser = (req, res) => {
-  res.send('create user');
+export const createUser = async (req, res) => {
+  const query = util.promisify(mysqli.query).bind(mysqli)
+  const sql = `INSERT INTO formboxes.user`
+  const result = await query(sql, [])
+  console.log(result)
+  return result
 }
 
 export const deleteUser = (req, res) => {

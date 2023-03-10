@@ -3,7 +3,17 @@ import {createUser, deleteUser, getUsers, updateUser} from '../controllers/user.
 
 const router = Router()
 
-router.get('/form', getUsers)
+router.get('/form', function(req,res){
+  getUsers().then(data => {
+    console.log(data)
+    res.json(data).status(200)
+  })
+  .catch(err => {
+    console.log(err)
+    res.sendStatus(500).json({response : "Error al obtener los datos."})
+  })
+})
+
 router.get('/form/user')
 router.post('/form', createUser)
 router.delete('/form/:id', deleteUser)
