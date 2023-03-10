@@ -11,7 +11,7 @@ app.listen(port)
 const mysqli = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Em.prendo2022',
+  password: '',
   database: 'formboxes',
   port: 3306
 })
