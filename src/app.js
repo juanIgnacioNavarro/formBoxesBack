@@ -7,6 +7,7 @@ const app = express();
 
 app.use(formRoutes)
 app.use(cors())
+app.use(express.json())
 
 //modulos
 app.use('/info', router)
