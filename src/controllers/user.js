@@ -3,22 +3,31 @@ import util from 'util';
 
 export const getUsers = async (req, res) => {
   const query = util.promisify(mysqli.query).bind(mysqli)
-  const sql = `SELECT * FROM formboxes.user;`;
+  /* const sql = `SELECT * FROM formboxes.user;`; */
+  const sql = `SELECT * FROM fromboxes.user A LEFT JOIN forboxes.cars B ON A.id = B.userid`
   const result = await query(sql, [])
   return result
 }
 
-export const createUser = async (name, lastname, phone, address) => {
+export const createUser = async (name, lastname, phone, address, model, brand, domain, description, color, mileage, paystate) => {
   const query = util.promisify(mysqli.query).bind(mysqli)
-  const sql = `INSERT INTO formboxes.user (name, lastname, phone, address) VALUES (?, ?, ?, ?);`
+  const sql = `INSERT INTO formboxes.user (name, lastname, phone, address) VALUES (?, ?, ?, ?);`;
   const result = await query(sql, [name, lastname, phone, address])
+  const sqlVehicle = `INSERT INTO formboxes.cars (model, brand, domain, description, color, mileage, userid) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const resultCars = await query(sqlVehicle, [model, brand, domain, description, color, mileage, result.insertId])
+  return result, resultCars
+}
+
+export const deleteUser = async() => {
+  const query = util.promisify(mysqli.query).bind(mysqli)
+  const sql = ``
+  const result = await query(sql, [])
   return result
 }
 
-export const deleteUser = (req, res) => {
-  res.send('delete user');
-}
-
-export const updateUser = (req, res) => {
-  res.send('update user');
+export const updateUser = async () => {
+  const query = util.promisify(mysqli.query).bind(mysqli)
+  const sql = ``;
+  const result = await query(sql, [])
+  return result
 }
