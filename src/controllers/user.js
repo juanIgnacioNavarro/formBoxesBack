@@ -13,7 +13,7 @@ export const createUser = async (name, lastname, phone, address, model, brand, d
   const query = util.promisify(mysqli.query).bind(mysqli)
   const sql = `INSERT INTO formboxes.user (name, lastname, phone, address) VALUES (?, ?, ?, ?);`;
   const result = await query(sql, [name, lastname, phone, address])
-  const sqlVehicle = `INSERT INTO formboxes.cars (model, brand, domain, description, color, mileage, userid) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const sqlVehicle = `INSERT INTO fromboxes.cars (model, brand, domain, description, color, mileage, userid) VALUES (?, ?, ?, ?, ?, ?, ?)`;
   const resultCars = await query(sqlVehicle, [model, brand, domain, description, color, mileage, result.insertId])
   return result, resultCars
 }
