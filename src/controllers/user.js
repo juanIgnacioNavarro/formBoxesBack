@@ -4,7 +4,7 @@ import util from 'util';
 export const getUsers = async (req, res) => {
   const query = util.promisify(mysqli.query).bind(mysqli)
   /* const sql = `SELECT * FROM formboxes.user;`; */
-  const sql = `SELECT * FROM fromboxes.user A LEFT JOIN forboxes.cars B ON A.id = B.userid`
+  const sql = `SELECT * FROM formboxes.user A LEFT JOIN formboxes.cars B ON A.id = B.userid`
   const result = await query(sql, [])
   return result
 }
